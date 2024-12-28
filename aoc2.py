@@ -31,7 +31,8 @@ n_safe = 0
 with open('aoc2.txt') as fp:
     for line in fp.readlines():
         d = np.diff(np.fromstring(line, sep=' '))
-        if np.logical_and(d >= 1, d <= 3).all() or np.logical_and(-d >= 1, -d <= 3).all():
+        if np.logical_and(d >= 1, d <= 3).all() or \
+            np.logical_and(-d >= 1, -d <= 3).all():
             n_safe += 1
 print(n_safe)
 
@@ -70,7 +71,8 @@ with open('aoc2.txt') as fp:
         a = np.fromstring(line, sep=' ')
         for el_idx in range(len(a)):
             d = np.diff(np.delete(a, el_idx))
-            if np.logical_and(d >= 1, d <= 3).all() or np.logical_and(-d >= 1, -d <= 3).all():
+            if np.logical_and(d >= 1, d <= 3).all() or \
+                np.logical_and(-d >= 1, -d <= 3).all():
                 n_safe += 1
                 break
             
