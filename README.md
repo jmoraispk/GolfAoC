@@ -4,7 +4,8 @@
 ## Problems solved
 
 (G) = Golfed
-(P) = Posted
+
+(P) = Posted on [skool](skool.com/python-mastery)
  
 | Problem | Part 1 | Part 1 (G) | Part 2 | Part 2 (G) | (P) | 
 |---------|--------|------------|--------|------------|-----|
