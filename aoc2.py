@@ -18,8 +18,8 @@ for line in lines:
     d = np.diff(a) # a[1:] - a[:-1]
     
     # all between 1 and 3 or all between -1 and -3
-    cond1 = np.logical_and(d >= 1, d <= 3).all()
-    cond2 = np.logical_and(-d >= 1, -d <= 3).all()
+    cond1 = ((d >= 1) & (d <= 3)).all()
+    cond2 = ((d <= -1) & (d >= -3)).all()
     if cond1 or cond2:
         n_safe += 1
 
@@ -31,8 +31,7 @@ n_safe = 0
 with open('aoc2.txt') as fp:
     for line in fp.readlines():
         d = np.diff(np.fromstring(line, sep=' '))
-        if np.logical_and(d >= 1, d <= 3).all() or \
-            np.logical_and(-d >= 1, -d <= 3).all():
+        if ((d >= 1) & (d <= 3)).all() or ((d <= -1) & (d >= -3)).all():
             n_safe += 1
 print(n_safe)
 
@@ -55,9 +54,7 @@ for line in lines:
             sub_a = np.delete(a, el_idx)
             d = np.diff(sub_a)
             
-            cond1 = np.logical_and(d >= 1, d <= 3).all()
-            cond2 = np.logical_and(-d >= 1, -d <= 3).all()
-            if cond1 or cond2:
+            if ((d >= 1) & (d <= 3)).all() or ((d <= -1) & (d >= -3)).all():
                 n_safe += 1
                 break
 
@@ -71,8 +68,7 @@ with open('aoc2.txt') as fp:
         a = np.fromstring(line, sep=' ')
         for el_idx in range(len(a)):
             d = np.diff(np.delete(a, el_idx))
-            if np.logical_and(d >= 1, d <= 3).all() or \
-                np.logical_and(-d >= 1, -d <= 3).all():
+            if ((d >= 1) & (d <= 3)).all() or ((d <= -1) & (d >= -3)).all():
                 n_safe += 1
                 break
             
