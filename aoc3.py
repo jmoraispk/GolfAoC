@@ -18,12 +18,12 @@ for line in lines:
         too_numb = splt.split(')')[0].split(',')
         if len(too_numb) != 2:
             continue
-        print(f'i = {i}')
-        print(f'too_numb = {too_numb}')
+        # print(f'i = {i}')
+        # print(f'too_numb = {too_numb}')
         try:
             res += int(too_numb[0]) * int(too_numb[1])
         except:
-            print('ignoring')
+            # print('ignoring')
             continue
 
 print(res)
@@ -66,7 +66,8 @@ def calc_chunk(chunk):
     
 pattern = r"do\(\)(.*?)don't\(\)"
 res = 0
-for line in lines:
+
+for line in [''.join(lines)]:
     
     # Split line between do and don't (ON from do->dont, OFF don't->do)
     matches = re.findall(pattern, line)
@@ -80,4 +81,45 @@ for line in lines:
 
 print(res)
 
+# Eliminate invalid parts
+
+# 56629581 ...
 # 69556683 too high
+
+#%%
+
+#%% Original (part 2)
+import re
+
+def calc_chunk(chunk):
+    aux = 0
+    l_split = chunk.split('mul(')
+    for i, splt in enumerate(l_split):
+        too_numb = splt.split(')')[0].split(',')
+        if len(too_numb) != 2:
+            continue
+        print(f'i = {i}')
+        print(f'too_numb = {too_numb}')
+        try:
+            aux += int(too_numb[0]) * int(too_numb[1])
+        except:
+            print('ignoring')
+            continue
+    return aux
+
+with open('aoc3.txt') as fp:
+    single_line = ''.join(fp.readlines()).replace('\n', '')
+
+remaining_line = re.sub(pattern=r"don't\(\)(.*?)do\(\)", 
+                        repl='', string=single_line)
+
+res = calc_chunk(remaining_line)
+
+print(res)
+
+# Eliminate invalid parts
+
+# 63364638 too high
+
+
+
